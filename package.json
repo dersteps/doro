@@ -12,7 +12,7 @@
   "dependencies": {
     "bootstrap": "^4.0.0",
     "electron": "^1.8.2",
-    "jquery": "^1.9.1",
+    "jquery": "^3.0.0",
     "popper": "^1.0.1",
     "popper.js": "^1.12.9",
     "winston": "^2.4.0"
