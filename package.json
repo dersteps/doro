@@ -1,0 +1,23 @@
+{
+  "name": "doro",
+  "version": "0.0.1",
+  "description": "A simple pomodoro timer in electron",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "author": "steps0x29a",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "electron": "^1.8.2",
+    "jquery": "^1.9.1",
+    "popper": "^1.0.1",
+    "popper.js": "^1.12.9",
+    "winston": "^2.4.0"
+  },
+  "devDependencies": {
+    "electron": "^1.8.2"
+  }
+}
