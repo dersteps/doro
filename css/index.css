@@ -63,7 +63,7 @@ html {
 
 .name-display {
   color: white;
-  font-size: 3em;
+  font-size: 2em;
   font-weight: normal;
 }
 
@@ -74,3 +74,33 @@ html {
   text-align: center;
   vertical-align: middle;
 }
+
+.app-button-bar {
+  /*height: 100%;*/
+  display: flex;
+  align-items: center;
+}
+
+.margin-top-10 {
+  margin-top: 10px;
+}
+
+.margin-top-20 {
+  margin-top: 20px;
+}
+
+.pad-right-10 {
+  padding-right: 10px;
+}
+
+
+.app-button {
+  cursor: pointer;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.app-button:hover, .app-button:active, .app-button:focus {
+  color: rgba(255, 255, 255, 0.75);
+}
+

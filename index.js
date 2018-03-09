@@ -30,7 +30,7 @@ function getWindowY() {
 function createWindow() {
     mainWindow = new BrowserWindow({
         width: 320, 
-        height: 230,
+        height: 330,
         center: true,
         x: getWindowX(),
         y: getWindowY(),

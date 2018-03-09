@@ -8,17 +8,20 @@
             
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
         <link href="./css/index.css" rel="stylesheet">
         
     </head>
-    <body class="app"  >
+    <body class="app" ng-app="doroApp" ng-controller="doroCtrl">
         <div role="main" class="container-fluid">
-            <div class="row " >
-                <div class="col-xs-12 text-center translucent-black header ">
-                    Header
+            <div class="row">
+                <div class="col-xs-12 text-center header ">
+                    <div class="app-button-bar margin-top-20 pull-right">
+                        <div class="app-button" ng-click="showSettings()"><i class="fa fa-2x fa-cog"></i></a>
+                    </div>
                 </div>
             </div>
-            <div class="row" ng-app="doroApp" ng-controller="doroCtrl" >
+            <div class="row" ng-controller="doroCtrl" >
                 <div class="col-xs-12 timer-container">
                     <div>
                         <span id="timer-display" class="timer-display">
@@ -30,9 +33,13 @@
                     </div>
                 </div>
             </div>
-            <div class="row " >
-                <div class="col-xs-12 text-center translucent-black footer ">
-                    Footer
+            <div class="row margin-top-20" >
+                <div class="col-xs-12 text-center">
+                    <div class="app-button-bar">
+                        <div class="app-button pad-right-10" ng-click="startSession()"><i class="fa fa-2x fa-play-circle"></i></div>
+                        <div class="app-button pad-right-10" ng-click="pausePomodoro()"><i class="fa fa-2x fa-pause-circle"></i></div>
+                        <div class="app-button pad-right-10" ng-click="resumePomodoro()"><i class="fa fa-2x fa-play-circle"></i></div>
+                    </div>
                 </div>
             </div>
         </div>

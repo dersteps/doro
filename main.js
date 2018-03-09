@@ -6,14 +6,14 @@ const path = require('path');
 
 var angularApp = angular.module('doroApp', []);
 
+angularApp.controller('menuCtrl', function($scope) {
+    
+});
+
+
 angularApp.controller('doroCtrl', function($scope) {
 
-    $scope.remaining = "???";
-    function getJSONData(filepath) {
-        return JSON.parse(fs.readFileSync(filepath, 'utf8'));
-    }
-
-    // If present, read user config
+     // If present, read user config
     console.log("User home: " + app.getPath('home'));
     const doroHome = path.join(app.getPath('home'), '.doro');
     const configFile = path.join(doroHome, 'doro.cfg');
@@ -53,35 +53,67 @@ angularApp.controller('doroCtrl', function($scope) {
     }
 
 
-    var session = new Session();
+    $scope.session = new Session();
     for(var i=0; i<iterations; i++) {
-        session.add(new Pomodoro(workTime, "Work #" + (i+1)));
+        $scope.session.add(new Pomodoro(workTime, "Work #" + (i+1)));
         if(i == iterations-1) {
-            session.add(new Pomodoro(longBreakTime, "Long break"));
+            $scope.session.add(new Pomodoro(longBreakTime, "Long break"));
         } else {
-            session.add(new Pomodoro(breakTime, "Break #" + (i+1)));
+            $scope.session.add(new Pomodoro(breakTime, "Break #" + (i+1)));
         }
     }
 
+    $scope.showSettings = () => {
+        alert("Display settings");
+    };
+
+    $scope.pausePomodoro = () => {
+        $scope.currentPomodoro.pause();
+    };
+
+    $scope.resumePomodoro = () => {
+        $scope.currentPomodoro.resume();
+    };
+
+    $scope.startSession = () => {
+        go($scope.session.next());
+    };
+
+    
+    function getJSONData(filepath) {
+        return JSON.parse(fs.readFileSync(filepath, 'utf8'));
+    }
+
+   
+
+    
+
+
+    
+
     function go(pomodoro) {
-        if(pomodoro === null) {
+        $scope.remaining = "???";
+        $scope.currentPomodoro = pomodoro;
+        if($scope.currentPomodoro === null) {
             console.log("Done");
             alert("Done");
             return;
         }
-        $scope.name = pomodoro.name;
-        pomodoro.start((remaining, pomodoro) => {
+        $scope.name = $scope.currentPomodoro.name;
+        $scope.currentPomodoro.start((remaining, pomodoro) => {
+            console.log("Raw remaining: " + remaining);
             $scope.$apply(function(){
                 $scope.remaining = toHuman(remaining);
+                console.log("$scope.remaining = " + $scope.remaining);
                 
              });
         }, (pom) => {
             $scope.remaining = "00:00";
-            go(session.next());
+            go($scope.session.next());
         });
     }
 
-    go(session.next());
+    
 
 
 });
